@@ -73,6 +73,7 @@ Grid.prototype = {
       return;
     }
 
+    // this is a bit suspicious...
     x = event.pageX || event.originalEvent.touches[0].pageX || event.originalEvent.changedTouches[0].pageX;
     y = event.pageY || event.originalEvent.touches[0].pageY || event.originalEvent.changedTouches[0].pageY;
     diffX = Math.floor(x/this.$container.width() * Grid.MAX_DIMENSION);
@@ -98,23 +99,19 @@ Grid.prototype = {
   render: function() {
     var width = Math.ceil(this.$container.width()/this.width) + 'px',
       i = this.width * this.height,
-      $row,
-      $col;
+      html = '';
 
-    this.$grid.empty();
+    this.$grid[0].innerHTML = html;
 
     while(i--) {
       if( (i + 1) % this.width === 0 ) {
-        $row = $('<div>').addClass('row');
-        this.$grid.append($row);
+        // seems like new browsers are nice enough to clean this up
+        html += '</div><div class="row">';
       }
-
-      $col = $('<div>').addClass('cell').css({
-        'background-color': this.randomColor(),
-        'width': width
-      });
-      $row.append($col);
+      html += '<div class="cell" style="background-color:' + this.randomColor() + ';width:'+  width + ';"></div>';
     }
+
+    this.$grid[0].innerHTML = html;
   },
 
   /**
@@ -127,7 +124,7 @@ Grid.prototype = {
 };
 
 Grid.MIN_DIMENSION = 1;
-Grid.MAX_DIMENSION = 50;
+Grid.MAX_DIMENSION = 75;
 Grid.DEFAULT_DIMENSION = Math.floor(Grid.MAX_DIMENSION/2);
 
 // Styles
