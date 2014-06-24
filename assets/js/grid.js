@@ -16,6 +16,7 @@ Grid.prototype = {
    **/
   setup: function() {
      var styles = '',
+      self = this,
       decl;
 
     // add styles for grid
@@ -43,8 +44,12 @@ Grid.prototype = {
     styles += '}';
 
     this.$style.html(styles);
-    $('head').append(this.$style);
 
+    // got to do this on load to be safe!
+    $(function() {
+      $('head').append(self.$style);
+    });
+    
     this.$grid = $('<div>').attr({
       id: 'grid'
     });

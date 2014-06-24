@@ -1,4 +1,4 @@
-# Just A Grid
+# [Just A Grid](justagrid.morgan.io)
 It's really just a grid that changes size and colors.
 
-Check it out!
+[Check it out!](justagrid.morgan.io)
