@@ -1,4 +1,4 @@
-# [Just A Grid](justagrid.mhgbrown.is)
+# [Just A Grid](http://justagrid.mhgbrown.is)
 It's really just a grid that changes size and colors.
 
-[Check it out!](justagrid.mhgbrown.is)
+[Check it out!](http://justagrid.mhgbrown.is)
